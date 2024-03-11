@@ -1,0 +1,487 @@
+Program.Sub.ScreenSU.Start
+Gui.OrderChange..Create
+Gui.OrderChange..Size(7650,3360)
+Gui.OrderChange..MinX(0)
+Gui.OrderChange..MinY(0)
+Gui.OrderChange..Position(0,0)
+Gui.OrderChange..BackColor(-2147483633)
+Gui.OrderChange..MousePointer(0)
+Gui.OrderChange..Event(UnLoad,Form_UnLoad)
+Gui.OrderChange..Caption("Quote Line UM Conversion")
+Gui.OrderChange.GsGridControl1.Create(GsGridControl)
+Gui.OrderChange.GsGridControl1.Size(7215,2235)
+Gui.OrderChange.GsGridControl1.Position(105,105)
+Gui.OrderChange.GsGridControl1.Event(RowCellClick,GsGridControl1_RowCellClick)
+Gui.OrderChange.cmdSave.Create(Button)
+Gui.OrderChange.cmdSave.Size(855,375)
+Gui.OrderChange.cmdSave.Position(105,2415)
+Gui.OrderChange.cmdSave.Caption("Save")
+Gui.OrderChange.cmdSave.Event(Click,cmdSave_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.Global.iRowIndex.Declare(Long,0)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'opening connection
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	F.Intrinsic.Control.Case(10260)
+		V.Passed.000201.Set("UM Conversion")
+		'ending the program
+		F.Intrinsic.Control.End
+
+	F.Intrinsic.Control.Case(10670)	
+		F.Intrinsic.Control.If(V.Passed.000052.Length,>,0)
+			F.Intrinsic.Control.If(V.Passed.000007,>,0)
+
+				F.Intrinsic.Control.CallSub(calculate_values)
+				F.Intrinsic.Control.CallSub(populate_grid)
+
+				'showing screen
+				Gui.OrderChange..Show
+			F.Intrinsic.Control.Else
+				F.Intrinsic.UI.Msgbox("Please enter a Qty.")
+				F.Intrinsic.Control.End
+
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Else
+			F.Intrinsic.UI.Msgbox("Please select a part.")
+			F.Intrinsic.Control.End
+
+		F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.Case(17343)
+		F.Intrinsic.Control.CallSub(populate_orderno)
+
+	F.Intrinsic.Control.CaseElse
+		'ending program if not one of the above hooks
+		F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(form_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.Form_UnLoad.Start
+F.Intrinsic.Control.SetErrorHandler("Form_UnLoad_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'closing datatable
+F.Intrinsic.Control.If(V.DataTable.Order.Exists,=,True)
+	F.Data.DataTable.Close("Order")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.Quote.Exists,=,True)
+	F.Data.DataTable.Close("Quote")
+F.Intrinsic.Control.EndIf
+
+'closing connection
+F.ODBC.Connection!con.Close
+'ending program
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Form_UnLoad_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.cmdSave_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSave_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)	
+	F.Intrinsic.Control.Case(10670)
+		'saving datatable
+		F.Data.DataTable.SaveToDB("Order","con","GCG_4324_SO_Change","Quote_No*!*Quote_Line*!*UM",7,"Quote_No@!@Quote_No*!*Quote_Line@!@Quote_Line*!*UM@!@UM*!*Price@!@Price*!*Selected_UM@!@Selected_UM*!*Weight@!@Weight")
+
+	F.Intrinsic.Control.Case(17343)
+		'saving datatable
+		F.Data.DataTable.SaveToDB("Quote","con","GCG_4324_SO_Change","Quote_No*!*Quote_Line*!*UM",7,"Quote_No@!@Quote_No*!*Quote_Line@!@Quote_Line*!*UM@!@UM*!*Order_No@!@Order_No*!*Order_Line@!@Order_Line")
+
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.CallSub(form_unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSave_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(form_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.GsGridControl1_RowCellClick.Start
+F.Intrinsic.Control.SetErrorHandler("GsGridControl1_RowCellClick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'making sure only one type is slected in the grid
+F.Data.DataTable.SetValue("Order",-1,"Selected_UM",False)
+
+'setting selected row to True
+F.Data.DataTable.SetValue("Order",V.Args.RowIndex,"Selected_UM",True)
+
+V.Global.iRowIndex.Set(V.Args.RowIndex)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("GsGridControl1_RowCellClick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(form_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.GsGridControl1_RowCellClick.End
+
+Program.Sub.Calculate_Values.Start
+F.Intrinsic.Control.SetErrorHandler("Calculate_Values_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.fPrice.Declare(Float)
+V.Local.fWeight.Declare(Float)
+V.Local.sType.Declare(String,"EA*!*CW*!*LB*!*SH*!*SQ*!*FT*!*IN")
+V.Local.sQuoteLine.Declare(String)
+V.Local.fTemp.Declare(Float)
+V.Local.sMsg.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sRev.Declare(String)
+
+F.Intrinsic.Math.Mult(V.Passed.000051,10,V.Local.sQuoteLine)
+F.Intrinsic.String.LPad(V.Local.sQuoteLine,"0",4,V.Local.sQuoteLine)
+
+'building datatable and calculating price for each type based on what the price is at on the order entry screen
+F.Intrinsic.String.Build("Select Selected_UM, Order_No, Order_Line, Quote_No, Quote_Line, UM, Weight, Price From GCG_4324_SO_Change Where Quote_No = '{0}' and Quote_Line = '{1}'",V.Passed.000060.Format*00000000,V.Local.sQuoteLine,V.Local.sSql)
+
+F.Data.DataTable.CreateFromSQL("Order","con",V.Local.sSql,True)
+
+'getting weight for part selected
+F.Intrinsic.String.RPad(V.Passed.000052," ",17,V.Local.sPart)
+F.Intrinsic.String.RPad(V.Passed.000053," ",3,V.Local.sRev)
+'F.Intrinsic.String.Build("Select LBS as Weight, Length, Width  From V_Inventory_Mst2 Where Part = '{0}{1}'",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sSql)
+F.Intrinsic.String.Build("Select LBS as Weight, Length, Width  From V_Inventory_Mst2 Where Part = '{0}{1}'",V.Local.sPart.PSQLFriendly,V.Local.sRev.PSQLFriendly,V.Local.sSql)
+
+F.Data.DataTable.CreateFromSQL("Weight","con",V.Local.sSql,True)
+
+'checking if weight for part is > 0
+F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,>=,0)
+	F.Intrinsic.Control.If(V.DataTable.Weight(0).Weight!FieldValFloat,=,0)
+		F.Intrinsic.Control.If(V.Passed.000016.Float,=,0)
+			F.Intrinsic.String.Build("{0}{1}",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sMsg)
+			F.Intrinsic.String.Build("Part {0} has not been given a weight.",V.Local.sMsg,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg)
+			F.Intrinsic.Control.End
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Passed.000016.Float,=,0)
+		F.Intrinsic.String.Build("{0}{1}",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sMsg)
+		F.Intrinsic.String.Build("Part {0} has not been given a weight.",V.Local.sMsg,V.Local.sMsg)
+		F.Intrinsic.UI.Msgbox(V.Local.sMsg)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.Order.RowCount--,>=,0)
+	'updating saved data
+	F.Intrinsic.Control.For(V.Local.i,0,V.DataTable.Order.RowCount--,1)
+		F.Intrinsic.Control.SelectCase(V.DataTable.Order(V.Local.i).UM!FieldValTrim)
+
+			'Each
+			F.Intrinsic.Control.Case("EA")	
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Passed.000009.Float,"Weight",V.Passed.000016.Float)				
+
+			F.Intrinsic.Control.Case("CW")
+				'calculating weight per
+				F.Intrinsic.Math.Div(V.Passed.000016.Float,V.Passed.000007.Float,V.Local.fWeight)
+				F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fWeight,V.Local.fPrice)
+'				F.Intrinsic.Math.Mult(V.Local.fPrice,V.Passed.000007.Float,V.Local.fPrice)
+				'calculating price per
+				F.Intrinsic.Math.Div(V.Local.fPrice,.01,V.Local.fPrice)
+
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)
+
+			'Inches	
+			F.Intrinsic.Control.Case("IN")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0)
+						F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,12,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fTemp,V.Local.fPrice)
+						F.Intrinsic.Control.Else
+							V.Local.fPrice.Set(V.Passed.000009.Float)
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)
+
+			F.Intrinsic.Control.Case("LB")
+				'calculating weight per
+				F.Intrinsic.Math.Div(V.Passed.000016.Float,V.Passed.000007.Float,V.Local.fWeight)
+				F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fWeight,V.Local.fPrice)
+'				F.Intrinsic.Math.Mult(V.Local.fPrice,V.Passed.000007.Float,V.Local.fPrice)			
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)
+
+			'Sheet
+			F.Intrinsic.Control.Case("SH")
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Passed.000009.Float,"Weight",V.Passed.000016.Float)
+
+			'Feet
+			F.Intrinsic.Control.Case("FT")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.DataTable.Weight(0).Length!FieldValFloat,V.Local.fPrice)
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+				
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)
+
+			'Square Feet
+			F.Intrinsic.Control.Case("SQ")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0,"AND",V.DataTable.Weight(0).Width!FieldValFloat,>,0)
+						F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,V.DataTable.Weight(0).Width!FieldValFloat,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Local.fTemp,144,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fTemp,V.Local.fPrice)
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+				
+				'setting values in datatable
+				F.Data.DataTable.SetValue("Order",V.Local.i,"Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)
+
+		F.Intrinsic.Control.EndSelect
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.Else
+	'creating data
+	F.Intrinsic.String.Split(V.Local.sType,"*!*",V.Local.sType)
+	F.Intrinsic.Control.For(V.Local.i,0,V.Local.sType.UBound,1)
+		F.Intrinsic.Control.SelectCase(V.Local.sType(V.Local.i))
+			F.Intrinsic.Control.Case("EA")
+				'setting values in datatable			
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Passed.000009.Float,"Weight",V.Passed.000016.Float,"Selected_UM",True)					
+
+			F.Intrinsic.Control.Case("CW")
+				'calculating weight per
+				F.Intrinsic.Math.Div(V.Passed.000016.Float,V.Passed.000007.Float,V.Local.fWeight)
+				F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fWeight,V.Local.fPrice)
+'				F.Intrinsic.Math.Mult(V.Local.fPrice,V.Passed.000007.Float,V.Local.fPrice)
+				'calculating price per
+				F.Intrinsic.Math.Div(V.Local.fPrice,.01,V.Local.fPrice)
+
+				'setting values in datatable
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)	
+
+			'Inches	
+			F.Intrinsic.Control.Case("IN")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0)
+						F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,12,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fTemp,V.Local.fPrice)
+						F.Intrinsic.Control.Else
+							V.Local.fPrice.Set(V.Passed.000009.Float)
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+				
+				'setting values in datatable
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)
+
+			F.Intrinsic.Control.Case("LB")
+				'calculating weight per
+				F.Intrinsic.Math.Div(V.Passed.000016.Float,V.Passed.000007.Float,V.Local.fWeight)
+				F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fWeight,V.Local.fPrice)
+'				F.Intrinsic.Math.Mult(V.Local.fPrice,V.Passed.000007.Float,V.Local.fPrice)
+
+				'setting values in datatable
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)	
+
+			'Sheet
+			F.Intrinsic.Control.Case("SH")
+				'setting values in datatable			
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Passed.000009.Float,"Weight",V.Passed.000016.Float,"Selected_UM",False)	
+
+			'Feet
+			F.Intrinsic.Control.Case("FT")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.DataTable.Weight(0).Length!FieldValFloat,V.Local.fPrice)
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+					
+				'setting values in datatable
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)
+
+			'Square Feet
+			F.Intrinsic.Control.Case("SQ")
+				F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,<>,-1)
+					F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,>,0,"AND",V.DataTable.Weight(0).Width!FieldValFloat,>,0)
+						F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,V.DataTable.Weight(0).Width!FieldValFloat,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Local.fTemp,144,V.Local.fTemp)
+						F.Intrinsic.Math.Div(V.Passed.000009.Float,V.Local.fTemp,V.Local.fPrice)
+					F.Intrinsic.Control.Else
+						V.Local.fPrice.Set(V.Passed.000009.Float)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					V.Local.fPrice.Set(V.Passed.000009.Float)
+				F.Intrinsic.Control.EndIf
+					
+				'setting values in datatable
+				F.Data.DataTable.AddRow("Order","Quote_No",V.Passed.000060.Format*00000000,"Quote_Line",V.Local.sQuoteLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)
+
+		F.Intrinsic.Control.EndSelect
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Calculate_Values_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(form_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Calculate_Values.End
+
+Program.Sub.Populate_Grid.Start
+F.Intrinsic.Control.SetErrorHandler("Populate_Grid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'setting grid properties
+gui.OrderChange.GsGridControl1.AddGridviewFromDatatable("Order","Order")
+gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Order_No","Visible",False)
+gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Order_Line","Visible",False)
+gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Quote_No","Visible",False)
+gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Quote_Line","Visible",False)
+gui.OrderChange.GsGridControl1.SetGridviewProperty("Order","ReadOnly",True)
+gui.OrderChange.GsGridControl1.SetGridviewProperty("Order","Editable",False)
+gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Selected_UM","Caption","Selected UM")
+Gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Price","DisplayCustomString","#0.0000")
+Gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Weight","DisplayCustomString","#0.00")
+
+'putting datatable into the grid
+gui.OrderChange.GsGridControl1.MainView("Order")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Populate_Grid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(form_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Populate_Grid.End
+
+Program.Sub.Populate_OrderNo.Start
+F.Intrinsic.Control.SetErrorHandler("Populate_OrderNo_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.i.Declare(Long,0)
+V.Local.sQuote.Declare(String)
+
+F.Intrinsic.String.Format(V.Passed.Quote,"0000000",V.Local.sQuote)
+F.Intrinsic.Control.If(V.DataTable.Quote.Exists,=,True)
+	F.Data.DataTable.Close("Quote")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("Select * From GCG_4324_SO_Change Where Quote_No = '{0}' Order by Order_Line",V.Local.sQuote,V.Local.sSql)
+F.Data.DataTable.CreateFromSQL("Quote","con",V.Local.sSql,True)
+
+F.Intrinsic.String.Build("Select Top 1 Order_No From V_Order_Header Where Quote = '{0}' and Quote_Won_Loss_Date = '{1}'",V.Local.sQuote,V.Ambient.Date.pervasiveDate,V.Local.sSql)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstHead",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rstHead.EOF,=,False)
+	F.Intrinsic.Control.For(V.Local.i,0,V.DataTable.Quote.RowCount--,1)
+		F.Intrinsic.String.Build("Select Record_No From V_Order_Lines Where Order_No = '{0}' and Order_Won = 'W' and Record_No = '{1}'",V.ODBC.con!rstHead.FieldValTrim!Order_No,V.DataTable.Quote(V.Local.i).Quote_Line!FieldValTrim,V.Local.sSql)
+		F.ODBC.Connection!con.OpenLocalRecordsetRO("rstLine",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rstLine.EOF,=,False)
+			F.Data.DataTable.SetValue("Quote",V.Local.i,"Order_No",V.ODBC.con!rstHead.FieldValTrim!Order_No,"Order_Line",V.ODBC.con!rstLine.FieldValTrim!Record_No)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rstLine.Close
+	F.Intrinsic.Control.Next(V.Local.i)
+
+	F.Intrinsic.Control.CallSub(cmdsave_click)
+
+F.Intrinsic.Control.EndIf
+
+F.ODBC.con!rstHead.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Populate_OrderNo_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4324_Quote_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(populate_orderno)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Populate_OrderNo.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$RLK$}$3/27/2017 9:29:11 AM$}$False
+Program.Sub.Comments.End
