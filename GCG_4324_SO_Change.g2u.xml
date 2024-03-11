@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxEdit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BorderStyle>None</BorderStyle>
+  <Pages>
+    <DefaultPage>
+      <Header>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Header>
+      <Footer>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Footer>
+      <PageSize>
+        <Width>0</Width>
+        <Height>0</Height>
+      </PageSize>
+    </DefaultPage>
+  </Pages>
+  <DisplayStrings />
+  <Selection>
+    <SelectionRect>
+      <Location>
+        <X>0</X>
+        <Y>376</Y>
+      </Location>
+      <Size>
+        <Width>24</Width>
+        <Height>13</Height>
+      </Size>
+      <X>0</X>
+      <Y>376</Y>
+      <Width>24</Width>
+      <Height>13</Height>
+    </SelectionRect>
+    <Options>UseColors OverwriteBlocks SelectLineOnTripleClick CopyLineWhenEmpty SelectWordOnCtrlClick</Options>
+  </Selection>
+  <Gutter>
+    <LineNumbersForeColor>WindowText</LineNumbersForeColor>
+    <Options>PaintLineNumbers PaintBookMarks PaintLineModificators</Options>
+  </Gutter>
+  <Margin>
+    <Visible>false</Visible>
+  </Margin>
+  <LineStyles />
+  <LineSeparator />
+  <Printing>
+    <Footer>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Footer>
+    <Header>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Header>
+  </Printing>
+  <WhiteSpace />
+  <TextSource>
+    <Position>
+      <X>0</X>
+      <Y>376</Y>
+    </Position>
+    <Lexer>
+      <Scheme>
+        <Author>Quantum Whale, LLC.</Author>
+        <Copyright>Copyright (c) 2004 - 2014 Quantum Whale LLC.</Copyright>
+        <FileType>gas</FileType>
+        <Version>1.5</Version>
+        <Styles>
+          <Style>
+            <Name>idents</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>numbers</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>reswords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>comments</Name>
+            <ForeColor>Green</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>xmlcomments</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>symbols</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>whitespace</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>strings</Name>
+            <ForeColor>Maroon</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>directives</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>htmlparams</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>syntax errors</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>codes nippets</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>255:180:228:180</BackColor>
+          </Style>
+          <Style>
+            <Name>GabReservedWords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabTokenWithBrackets</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabFunctionIntrinsicDebug</Name>
+            <ForeColor>White</ForeColor>
+            <BackColor>Red</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>GabVariable</Name>
+            <ForeColor>Teal</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabVariableSystemDefined</Name>
+            <ForeColor>Teal</ForeColor>
+            <FontStyle>Bold Italic</FontStyle>
+          </Style>
+          <Style>
+            <Name>GabGui</Name>
+            <ForeColor>OrangeRed</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabProgramSubStartEnd</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>LightGray</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+        </Styles>
+      </Scheme>
+    </Lexer>
+    <TextStrings>
+      <Lines>
+        <string>Program.Sub.ScreenSU.Start</string>
+        <string>Gui.OrderChange..Create</string>
+        <string>Gui.OrderChange..Size(7650,3360)</string>
+        <string>Gui.OrderChange..MinX(0)</string>
+        <string>Gui.OrderChange..MinY(0)</string>
+        <string>Gui.OrderChange..Position(0,0)</string>
+        <string>Gui.OrderChange..BackColor(-2147483633)</string>
+        <string>Gui.OrderChange..MousePointer(0)</string>
+        <string>Gui.OrderChange..Event(UnLoad,Form_UnLoad)</string>
+        <string>Gui.OrderChange..Caption("Sales Order Line UM Conversion")</string>
+        <string>Gui.OrderChange.GsGridControl1.Create(GsGridControl)</string>
+        <string>Gui.OrderChange.GsGridControl1.Size(7215,2235)</string>
+        <string>Gui.OrderChange.GsGridControl1.Position(105,105)</string>
+        <string>Gui.OrderChange.GsGridControl1.Event(RowCellClick,GsGridControl1_RowCellClick)</string>
+        <string>Gui.OrderChange.cmdSave.Create(Button)</string>
+        <string>Gui.OrderChange.cmdSave.Size(855,375)</string>
+        <string>Gui.OrderChange.cmdSave.Position(105,2415)</string>
+        <string>Gui.OrderChange.cmdSave.Caption("Save")</string>
+        <string>Gui.OrderChange.cmdSave.Event(Click,cmdSave_Click)</string>
+        <string>Program.Sub.ScreenSU.End</string>
+        <string />
+        <string>Program.Sub.Preflight.Start</string>
+        <string>Variable.Global.iRowIndex.Declare(Long,0)</string>
+        <string>Program.Sub.Preflight.End</string>
+        <string />
+        <string>Program.Sub.Main.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Main_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'opening connection</string>
+        <string>F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)</string>
+        <string>			</string>
+        <string>F.Intrinsic.Control.SelectCase(V.Caller.Hook)</string>
+        <string>	F.Intrinsic.Control.Case(12010)</string>
+        <string>		V.Passed.000162.Set("UM Conversion")</string>
+        <string>		'ending the program</string>
+        <string>		F.Intrinsic.Control.End</string>
+        <string />
+        <string>	F.Intrinsic.Control.Case(12410)</string>
+        <string>		F.Intrinsic.Control.If(V.Passed.000052.Length,&gt;,0)</string>
+        <string />
+        <string>			F.Intrinsic.Control.CallSub(calculate_values)</string>
+        <string>			F.Intrinsic.Control.CallSub(populate_grid)</string>
+        <string />
+        <string>			'showing screen</string>
+        <string>			Gui.OrderChange..Show</string>
+        <string>		F.Intrinsic.Control.Else</string>
+        <string>			F.Intrinsic.UI.Msgbox("Please select a part.")</string>
+        <string>			F.Intrinsic.Control.End</string>
+        <string />
+        <string>		F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>	F.Intrinsic.Control.CaseElse</string>
+        <string>		'ending program if not one of the above hooks</string>
+        <string>		F.Intrinsic.Control.End</string>
+        <string />
+        <string>F.Intrinsic.Control.EndSelect</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Main_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.Main.End</string>
+        <string />
+        <string>Program.Sub.Form_UnLoad.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Form_UnLoad_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'closing datatable</string>
+        <string>F.Intrinsic.Control.If(V.DataTable.Order.Exists,=,True)</string>
+        <string>	F.Data.DataTable.Close("Order")</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>'closing connection</string>
+        <string>F.ODBC.Connection!con.Close</string>
+        <string>'ending program</string>
+        <string>F.Intrinsic.Control.End</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Form_UnLoad_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.End</string>
+        <string />
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.Form_UnLoad.End</string>
+        <string />
+        <string>Program.Sub.cmdSave_Click.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("cmdSave_Click_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'saving datatable</string>
+        <string>F.Data.DataTable.SaveToDB("Order","con","GCG_4324_SO_Change","Order_No*!*Order_Line*!*UM",7,"Order_No@!@Order_No*!*Order_Line@!@Order_Line*!*UM@!@UM*!*Price@!@Price*!*Selected_UM@!@Selected_UM*!*Weight@!@Weight")</string>
+        <string />
+        <string>F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("cmdSave_Click_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.cmdSave_Click.End</string>
+        <string />
+        <string>Program.Sub.GsGridControl1_RowCellClick.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("GsGridControl1_RowCellClick_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'making sure only one type is slected in the grid</string>
+        <string>F.Data.DataTable.SetValue("Order",-1,"Selected_UM",False)</string>
+        <string />
+        <string>'setting selected row to True</string>
+        <string>F.Data.DataTable.SetValue("Order",V.Args.RowIndex,"Selected_UM",True)</string>
+        <string />
+        <string>V.Global.iRowIndex.Set(V.Args.RowIndex)</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("GsGridControl1_RowCellClick_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.GsGridControl1_RowCellClick.End</string>
+        <string />
+        <string>Program.Sub.Calculate_Values.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Calculate_Values_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>V.Local.sSql.Declare(String)</string>
+        <string>V.Local.i.Declare(Long)</string>
+        <string>V.Local.fPrice.Declare(Float)</string>
+        <string>V.Local.fWeight.Declare(Float)</string>
+        <string>V.Local.sType.Declare(String,"EA*!*CW*!*LB*!*SH*!*SQ*!*FT*!*IN")</string>
+        <string>V.Local.sOrdLine.Declare(String)</string>
+        <string>V.Local.fTemp.Declare(Float)</string>
+        <string>V.Local.sMsg.Declare(String)</string>
+        <string>V.Local.sPart.Declare(String)</string>
+        <string>V.Local.sRev.Declare(String)</string>
+        <string />
+        <string>F.Intrinsic.Control.If(V.Passed.000051.Long,&lt;,10)</string>
+        <string>	F.Intrinsic.String.Build("{0}0",V.Passed.000051.Format*0000,V.Local.sOrdLine)</string>
+        <string>F.Intrinsic.Control.Else</string>
+        <string>	V.Local.sOrdLine.Set(V.Passed.000051.Format*00000)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>'building datatable and calculating price for each type based on what the price is at on the order entry screen</string>
+        <string>F.Intrinsic.String.Build("Select Selected_UM, Order_No, Order_Line, Quote_No, Quote_Line, UM, Weight, Price From GCG_4324_SO_Change Where Order_No = '{0}' and Order_Line = '{1}'",V.Passed.000060.Format*00000000,V.Local.sOrdLine,V.Local.sSql)</string>
+        <string />
+        <string>F.Data.DataTable.CreateFromSQL("Order","con",V.Local.sSql,True)</string>
+        <string />
+        <string>'getting weight for part selected</string>
+        <string>F.Intrinsic.String.RPad(V.Passed.000052," ",17,V.Local.sPart)</string>
+        <string>F.Intrinsic.String.RPad(V.Passed.000053," ",3,V.Local.sRev)</string>
+        <string>'F.Intrinsic.String.Build("Select LBS as Weight, Length, Width  From V_Inventory_Mst2 Where Part = '{0}{1}'",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sSql)</string>
+        <string>F.Intrinsic.String.Build("Select LBS as Weight, Length, Width  From V_Inventory_Mst2 Where Part = '{0}{1}'",V.Local.sPart,V.Local.sRev,V.Local.sSql)</string>
+        <string />
+        <string>F.Data.DataTable.CreateFromSQL("Weight","con",V.Local.sSql,True)</string>
+        <string />
+        <string>'checking if weight for part is &gt; 0</string>
+        <string>F.Intrinsic.Control.If(V.DataTable.Weight.RowCount--,&gt;=,0)</string>
+        <string>	F.Intrinsic.Control.If(V.DataTable.Weight(0).Weight!FieldValFloat,=,0)</string>
+        <string>		F.Intrinsic.String.Build("{0}{1}",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sMsg)</string>
+        <string>		F.Intrinsic.String.Build("Part {0} has not been given a weight.",V.Local.sMsg,V.Local.sMsg)</string>
+        <string>		F.Intrinsic.UI.Msgbox(V.Local.sMsg)</string>
+        <string>		F.Intrinsic.Control.End</string>
+        <string />
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string>F.Intrinsic.Control.Else</string>
+        <string>	F.Intrinsic.String.Build("{0}{1}",V.Passed.000052.Format*##################,V.Passed.000053.Format*####,V.Local.sMsg)</string>
+        <string>	F.Intrinsic.String.Build("Part {0} has not been given a weight.",V.Local.sMsg,V.Local.sMsg)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sMsg)</string>
+        <string>	F.Intrinsic.Control.End</string>
+        <string />
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.Intrinsic.Control.If(V.DataTable.Order.RowCount--,&gt;=,0)</string>
+        <string>	'updating saved data</string>
+        <string>	F.Intrinsic.Control.For(V.Local.i,0,V.DataTable.Order.RowCount--,1)</string>
+        <string>		F.Intrinsic.Control.SelectCase(V.DataTable.Order(V.Local.i).UM!FieldValTrim)</string>
+        <string />
+        <string>			'Each</string>
+        <string>			F.Intrinsic.Control.Case("EA")	</string>
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Passed.000105.Float,"Weight",V.Passed.000016.Float)				</string>
+        <string />
+        <string>			F.Intrinsic.Control.Case("CW")</string>
+        <string>				'calculating price per</string>
+        <string>				F.Intrinsic.Math.Div(V.Passed.000099.Float,.01,V.Local.fPrice)</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>			'Inches	</string>
+        <string>			F.Intrinsic.Control.Case("IN")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.DataTable.Weight(0).Length!FieldValFloat,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>			F.Intrinsic.Control.Case("LB")			</string>
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Passed.000099.Float,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>			'Sheet</string>
+        <string>			F.Intrinsic.Control.Case("SH")</string>
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Passed.000105.Float,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>			'Feet</string>
+        <string>			F.Intrinsic.Control.Case("FT")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Div(V.DataTable.Weight(0).Length!FieldValFloat,12,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.Local.fTemp,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>			'Square Feet</string>
+        <string>			F.Intrinsic.Control.Case("SQ")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,V.DataTable.Weight(0).Width!FieldValFloat,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Local.fTemp,144,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.Local.fTemp,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.SetValue("Order",V.Local.i,"Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float)</string>
+        <string />
+        <string>		F.Intrinsic.Control.EndSelect</string>
+        <string>	F.Intrinsic.Control.Next(V.Local.i)</string>
+        <string>F.Intrinsic.Control.Else</string>
+        <string>	'creating data</string>
+        <string>	F.Intrinsic.String.Split(V.Local.sType,"*!*",V.Local.sType)</string>
+        <string>	F.Intrinsic.Control.For(V.Local.i,0,V.Local.sType.UBound,1)</string>
+        <string>		F.Intrinsic.Control.SelectCase(V.Local.sType(V.Local.i))</string>
+        <string>			F.Intrinsic.Control.Case("EA")</string>
+        <string>				'setting values in datatable			</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Passed.000105.Float,"Weight",V.Passed.000016.Float,"Selected_UM",True)					</string>
+        <string />
+        <string>			F.Intrinsic.Control.Case("CW")</string>
+        <string>				'calculating price per</string>
+        <string>				F.Intrinsic.Math.Div(V.Passed.000099.Float,.01,V.Local.fPrice)</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)	</string>
+        <string />
+        <string>			'Inches	</string>
+        <string>			F.Intrinsic.Control.Case("IN")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.DataTable.Weight(0).Length!FieldValFloat,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)</string>
+        <string />
+        <string>			F.Intrinsic.Control.Case("LB")				</string>
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Passed.000099.Float,"Weight",V.Passed.000016.Float,"Selected_UM",False)	</string>
+        <string />
+        <string>			'Sheet</string>
+        <string>			F.Intrinsic.Control.Case("SH")</string>
+        <string>				'setting values in datatable			</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Passed.000105.Float,"Weight",V.Passed.000016.Float,"Selected_UM",False)	</string>
+        <string />
+        <string>			'Feet</string>
+        <string>			F.Intrinsic.Control.Case("FT")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Div(V.DataTable.Weight(0).Length!FieldValFloat,12,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.Local.fTemp,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)</string>
+        <string />
+        <string>			'Square Feet</string>
+        <string>			F.Intrinsic.Control.Case("SQ")</string>
+        <string>				F.Intrinsic.Control.If(V.DataTable.Weight(0).Length!FieldValFloat,&gt;,0)</string>
+        <string>					F.Intrinsic.Math.Mult(V.DataTable.Weight(0).Length!FieldValFloat,V.DataTable.Weight(0).Width!FieldValFloat,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Local.fTemp,144,V.Local.fTemp)</string>
+        <string>					F.Intrinsic.Math.Div(V.Passed.000105.Float,V.Local.fTemp,V.Local.fPrice)</string>
+        <string>				F.Intrinsic.Control.Else</string>
+        <string>					V.Local.fPrice.Set(V.Passed.000105.Float)</string>
+        <string>				F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>				'setting values in datatable</string>
+        <string>				F.Data.DataTable.AddRow("Order","Order_No",V.Passed.000060.Format*00000000,"Order_Line",V.Local.sOrdLine,"UM",V.Local.sType(V.Local.i),"Price",V.Local.fPrice,"Weight",V.Passed.000016.Float,"Selected_UM",False)</string>
+        <string />
+        <string>		F.Intrinsic.Control.EndSelect</string>
+        <string>	F.Intrinsic.Control.Next(V.Local.i)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Calculate_Values_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.Calculate_Values.End</string>
+        <string />
+        <string>Program.Sub.Populate_Grid.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Populate_Grid_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'setting grid properties</string>
+        <string>gui.OrderChange.GsGridControl1.AddGridviewFromDatatable("Order","Order")</string>
+        <string>gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Order_No","Visible",False)</string>
+        <string>gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Order_Line","Visible",False)</string>
+        <string>gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Quote_No","Visible",False)</string>
+        <string>gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Quote_Line","Visible",False)</string>
+        <string>gui.OrderChange.GsGridControl1.SetGridviewProperty("Order","ReadOnly",True)</string>
+        <string>gui.OrderChange.GsGridControl1.SetGridviewProperty("Order","Editable",False)</string>
+        <string>gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Selected_UM","Caption","Selected UM")</string>
+        <string>Gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Price","DisplayCustomString","#0.0000")</string>
+        <string>Gui.OrderChange.GsGridControl1.SetColumnProperty("Order","Weight","DisplayCustomString","#0.00")</string>
+        <string />
+        <string>'putting datatable into the grid</string>
+        <string>gui.OrderChange.GsGridControl1.MainView("Order")</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Populate_Grid_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4324_SO_Change.g2u",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(form_unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>Program.Sub.Populate_Grid.End</string>
+        <string />
+        <string>Program.Sub.Comments.Start</string>
+        <string>${$0$}$GCG_4324_Order_Change$}$RLK$}$1/3/2017 9:11:04 AM$}$False</string>
+        <string>${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$This will be a custom GAB script will allow the user to select from different ?Types? of pricing. When making a selection the price on the order lines screen for the part will change based on what the user selected. This will take place in both order entry and purchasing.</string>
+        <string>The types, formulas associated with a part will be stored in a custom SQL table.</string>
+        <string>The open orders and quote standard reports will be modified to display the types for each part.</string>
+        <string />
+        <string>From both Order Entry and Purchasing, when the user goes to select a part, they will have the option to select the Script 1 button to launch the custom program.</string>
+        <string />
+        <string>The custom program will display a form showing price information based on certain ?types? (i.e. Price per Unit, Price per Foot, etc.)</string>
+        <string />
+        <string>*Note: Attached to the call is a word document explaining what the customer is expecting to see for price selection.</string>
+        <string />
+        <string>The data will be saved in a custom SQL table to later be used to display the ?Type? on standard open order and quote Crystal reports.</string>
+        <string>Program.Sub.Comments.End</string>
+      </Lines>
+    </TextStrings>
+  </TextSource>
+  <Scrolling>
+    <WindowOriginY>303</WindowOriginY>
+    <Options>None</Options>
+  </Scrolling>
+  <Outlining>
+    <AllowOutlining>true</AllowOutlining>
+    <ImageSize>8</ImageSize>
+    <Ranges>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>0</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>19</Y>
+        </EndPoint>
+        <Text>Program.Sub.ScreenSU</Text>
+        <DisplayText>Program.Sub.ScreenSU</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>21</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>23</Y>
+        </EndPoint>
+        <Text>Program.Sub.Preflight</Text>
+        <DisplayText>Program.Sub.Preflight</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>25</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>70</Y>
+        </EndPoint>
+        <Text>Program.Sub.Main</Text>
+        <DisplayText>Program.Sub.Main</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>72</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>99</Y>
+        </EndPoint>
+        <Text>Program.Sub.Form_UnLoad</Text>
+        <DisplayText>Program.Sub.Form_UnLoad</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>101</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>122</Y>
+        </EndPoint>
+        <Text>Program.Sub.cmdSave_Click</Text>
+        <DisplayText>Program.Sub.cmdSave_Click</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>124</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>148</Y>
+        </EndPoint>
+        <Text>Program.Sub.GsGridControl1_RowCellClick</Text>
+        <DisplayText>Program.Sub.GsGridControl1_RowCellClick</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>150</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>341</Y>
+        </EndPoint>
+        <Text>Program.Sub.Calculate_Values</Text>
+        <DisplayText>Program.Sub.Calculate_Values</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>343</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>374</Y>
+        </EndPoint>
+        <Text>Program.Sub.Populate_Grid</Text>
+        <DisplayText>Program.Sub.Populate_Grid</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>376</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>389</Y>
+        </EndPoint>
+        <Text>Program.Sub.Comments</Text>
+        <DisplayText>Program.Sub.Comments</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+    </Ranges>
+  </Outlining>
+  <HyperText />
+  <Spelling />
+  <Braces />
+</SyntaxEdit>
